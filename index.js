@@ -26,10 +26,10 @@ function moveRobot(currentPosition, direction, roomDimensions) {
     x = x + 1 > roomX ? roomX : x + 1;
     return [x, y];
   } else if (direction === "S") {
-    y = y - 1 < 0 ? 0 : y - 1;
+    y = y - 1 < 1 ? 1 : y - 1;
     return [x, y];
   } else if (direction === "W") {
-    x = x - 1 < 0 ? 0 : x - 1;
+    x = x - 1 < 1 ? 1 : x - 1;
     return [x, y];
   }
 }
