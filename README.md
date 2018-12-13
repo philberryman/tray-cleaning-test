@@ -22,3 +22,9 @@ The output will be the finish location (line 1), followed by the amount of posit
 1 3
 
 1
+
+### Python version
+
+I redid this test in Python as an experiment to see how similar the two languages are.
+
+[https://github.com/philberryman/cleaning-test-python]
