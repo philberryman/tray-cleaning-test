@@ -34,6 +34,12 @@ function moveRobot(currentPosition, direction, roomDimensions) {
   }
 }
 
+function cleanPosition(dirtyToCleaned, currentPosition) {
+  return dirtyToCleaned.filter(
+    item => item.join("-") !== currentPosition.join("-") // joining the arrays seemed like the easiest way of comparing
+  );
+}
+
 function cleanRoom(instructionData) {
   const {
     roomDimensions,
@@ -44,11 +50,11 @@ function cleanRoom(instructionData) {
 
   let dirtyToCleaned = dirtyLocations;
   let currentPosition = startPosition;
+  dirtyToCleaned = cleanPosition(dirtyToCleaned, currentPosition);
+
   for (let i = 0; i < movements.length; i++) {
     currentPosition = moveRobot(currentPosition, movements[i], roomDimensions);
-    dirtyToCleaned = dirtyToCleaned.filter(
-      item => item.join("-") !== currentPosition.join("-") // joining the arrays seemed like the easiest way of comparing
-    );
+    dirtyToCleaned = cleanPosition(dirtyToCleaned, currentPosition);
   }
   const cleanedCount = dirtyLocations.length - dirtyToCleaned.length;
   return { finishLocation: currentPosition, cleanedCount: cleanedCount };
